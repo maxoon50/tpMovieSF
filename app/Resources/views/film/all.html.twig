@@ -2,49 +2,50 @@
 
 {% block main %}
     <h2>Tous les films</h2>
+
     <div class="flex">
-        {% for f in films %}
+        {% for movie in pagination %}
 
             <div class="card card-item">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ asset('posters/'~ f.imdbId ~'.jpg') }}">
+                    <img class="activator" src="{{ asset('posters/'~ movie.imdbId ~'.jpg') }}">
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{ f.title }}<i class="material-icons right">more_vert</i></span>
+                    <span class="card-title activator grey-text text-darken-4">{{ movie.title }}<i class="material-icons right">more_vert</i></span>
                     <p><a href="#">Voir le teaser</a></p>
-                    <a href="{{ path('getfilm', {"id": f.imdbId }) }}">
+                    <a href="{{ path('getfilm', {"id": movie.imdbId }) }}">
                     <div class="rating">
-                        {% if f.rating <= 2 %}
+                        {% if movie.rating <= 2 %}
                             <i class="tiny material-icons">star_half</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
-                        {% elseif f.rating <= 4 %}
+                        {% elseif movie.rating <= 4 %}
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
-                        {% elseif f.rating <= 6 %}
+                        {% elseif movie.rating <= 6 %}
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star_half</i>
                             <i class="tiny material-icons">star_border</i>
                             <i class="tiny material-icons">star_border</i>
-                        {% elseif f.rating <= 7 %}
+                        {% elseif movie.rating <= 7 %}
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star_half</i>
                             <i class="tiny material-icons">star_border</i>
-                        {% elseif f.rating <= 8 %}
+                        {% elseif movie.rating <= 8 %}
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star_border</i>
-                        {% elseif f.rating <= 9 %}
+                        {% elseif movie.rating <= 9 %}
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
@@ -57,19 +58,21 @@
                             <i class="tiny material-icons">star</i>
                             <i class="tiny material-icons">star</i>
                         {% endif %}
-                        <span> note : {{ f.rating }} </span>
+                        <span> note : {{ movie.rating }} </span>
                     </div>
                     </a>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{ f.title }}<i class="material-icons right">close</i></span>
-                    <p>{{ f.plot }}</p>
-                    <a href="{{ path('getfilm', {"id": f.imdbId }) }}"><p>voir le détail</p></a>
+                    <span class="card-title grey-text text-darken-4">{{ movie.title }}<i class="material-icons right">close</i></span>
+                    <p>{{ movie.plot }}</p>
+                    <a href="{{ path('getfilm', {"id": movie.imdbId }) }}"><p>voir le détail</p></a>
 
                 </div>
             </div>
 
         {% endfor %}
     </div>
-
+    <div class="navigation m-l">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}
