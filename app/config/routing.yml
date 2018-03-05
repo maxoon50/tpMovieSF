@@ -1,3 +1,7 @@
 home:
     path:     /
     defaults: { _controller: AppBundle:Film:home }
+
+getall:
+    path:     /get-all
+    defaults: { _controller: AppBundle:Film:getAll }

@@ -1,3 +1,41 @@
 nav{
     background-color: #ff9f43;
 }
+#logo{
+    margin-left: 50px;
+    height:35px;
+    margin-top: 15px;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-item{
+    margin:20px;
+    width:175px;
+    min-width: 170px;
+    min-height: 300px;
+}
+.min-height-xxl{
+    min-height: 700px;
+}
+.appFlashs{
+    position: fixed;
+    top:70px;
+    left:100px;
+    z-index: 1;
+}
+em{
+    font-size: 0.8em;
+}
+.m-l{
+    margin:20px;
+}
+.btn-right{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+img{
+    max-width: 450px;
+}
