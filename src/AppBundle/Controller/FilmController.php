@@ -16,7 +16,9 @@ class FilmController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository(Movie::class);
         $films = $repo->findAll();
-        var_dump($films);
-        die();
+
+        return $this->render('/film/all.html.twig', [
+           "films"=> $films
+        ]);
     }
 }

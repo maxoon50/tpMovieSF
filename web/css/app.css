@@ -12,12 +12,13 @@ nav{
 }
 .card-item{
     margin:20px;
-    width:175px;
+    max-width:250px;
     min-width: 170px;
     min-height: 300px;
 }
 .min-height-xxl{
     min-height: 700px;
+    padding-top:75px;
 }
 .appFlashs{
     position: fixed;
@@ -38,4 +39,8 @@ em{
 }
 img{
     max-width: 450px;
+}
+.rating{
+    display: flex;
+    align-items: center;
 }

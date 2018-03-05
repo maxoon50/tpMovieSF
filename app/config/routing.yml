@@ -5,3 +5,7 @@ home:
 getall:
     path:     /get-all
     defaults: { _controller: AppBundle:Film:getAll }
+
+getfilm:
+    path:     /get-film/{id}
+    defaults: { _controller: AppBundle:Film:getDetail }
