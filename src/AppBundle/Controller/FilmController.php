@@ -26,6 +26,14 @@ class FilmController extends Controller
         );
 
         return $this->render('/film/all.html.twig', array('pagination' => $pagination));
+    }
 
+    public function getDetailAction($id){
+        $repo = $this->getDoctrine()->getRepository(Movie::class);
+        $film = $repo->findOneByImdbId($id);
+
+        return $this->render('/film/detail_film.html.twig',[
+            "film"=> $film
+        ]);
     }
 }

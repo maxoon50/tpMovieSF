@@ -14,17 +14,12 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findAllbyPagination()
     {
-
         $qb = $this->createQueryBuilder('m');
         $qb->addSelect('m')
             ->addOrderBy('m.title', 'ASC')
         ;
-
         $query = $qb->getQuery();
 
-
-
         return $query;
-
     }
 }

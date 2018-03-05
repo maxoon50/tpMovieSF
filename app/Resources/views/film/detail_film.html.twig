@@ -1,0 +1,64 @@
+{% extends 'main.html.twig' %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    //a voir
+<div class="cont-detail-film" style= "background-image: url({{ asset('posters/'~ film.imdbId ~'.jpg') }});";>
+    <h2>{{ film.title }}</h2><span><em>{{ film.year }}</em></span>
+    <p> <div class="rating">
+        {% if film.rating <= 2 %}
+            <i class="tiny material-icons">star_half</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+        {% elseif film.rating <= 4 %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+        {% elseif film.rating <= 6 %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star_half</i>
+            <i class="tiny material-icons">star_border</i>
+            <i class="tiny material-icons">star_border</i>
+        {% elseif film.rating <= 7 %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star_half</i>
+            <i class="tiny material-icons">star_border</i>
+        {% elseif film.rating <= 8 %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star_border</i>
+        {% elseif film.rating <= 9 %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star_half</i>
+        {% else %}
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+            <i class="tiny material-icons">star</i>
+        {% endif %}
+        <span> note : {{ film.rating }} sur {{ film.votes }}</span>
+    </div></p>
+<p>{{ film.plot }}</p>
+
+</div>
+
+
+
+{% endblock %}
