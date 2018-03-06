@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="card col s8 form-cont offset-s2">
+        <h4 class="center">Créez votre compte !</h4>
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+
+<div class="flex">
+    <button class="btn waves-effect waves-light m-l" type="submit" id="_submit" name="_submit">Créer
+        <i class="material-icons right">send</i>
+    </button>
+</div>
+{{ form_end(form) }}
+    </div>
+</div>

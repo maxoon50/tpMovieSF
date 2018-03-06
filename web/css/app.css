@@ -1,6 +1,16 @@
 nav{
     background-color: #ff9f43;
 }
+body{
+    background-image: url('../images/Cinema2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+.whiteText{
+    color:white;
+}
 #logo{
     margin-left: 50px;
     height:35px;
@@ -19,6 +29,8 @@ nav{
 .min-height-xxl{
     padding-top:125px;
     padding-bottom: 125px;
+    min-height: 700px;
+
 }
 .appFlashs{
     position: fixed;
@@ -65,4 +77,13 @@ img{
 
 .genre-cont{
    margin-left: auto;
+}
+.form-cont{
+    padding:50px !important;
+}
+form button{
+    width: 100%;
+}
+.center{
+    text-align: center;
 }

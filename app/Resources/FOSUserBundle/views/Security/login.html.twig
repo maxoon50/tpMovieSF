@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {#<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">#}
+
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a id="logo-container" href="{{ path('home') }}" class="brand-logo"><img src="{{ asset('images/logo.png') }}" alt="" id="logo"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <li><a href="{{ path('getall') }}">tous les films</a></li>
+            {#
+                     <li><a href="{{ path('todo_list') }}">liste</a></li>
+            <li><a href="{{ path('home') }}">accueil</a></li>
+            <li><a href="{{ path('todo_bestof') }}">best of</a></li>
+            <li><a href="{{ path('todo_add') }}">j'ai une idée</a></li>
+            <li><a href="{{ path('about') }}">à propos</a></li>
+            {% if app.user %}
+            <li><a href="{{ path('logout') }}">{{ app.user.username }} | logout</a></li>
+            {% else %}
+            <li><a href="{{ path('login') }}">login</a></li>
+            <li><a href="{{ path('register') }}">créer un compte</a></li>
+            {% endif %}
+            #}
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container min-height-xxl">
+
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}
+
+</div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Liens</h5>
+                <ul>
+                    {#
+                          <li><a class="grey-text text-lighten-3" href="{{ path('home') }}">Home</a></li>
+                     <li><a class="grey-text text-lighten-3" href="{{ path('about') }}">Qui sommes nous</a></li>
+
+                    #}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <p>{{ "now"|date("Y") }} Bucket-List</p>
+        </div>
+    </div>
+</footer>
+    <!--  Scripts-->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
+</body>
+</html>
