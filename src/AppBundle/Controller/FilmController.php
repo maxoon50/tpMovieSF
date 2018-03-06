@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Movie;
+use AppBundle\Entity\Review;
+use AppBundle\Form\ReviewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -28,12 +30,31 @@ class FilmController extends Controller
         return $this->render('/film/all.html.twig', array('pagination' => $pagination));
     }
 
-    public function getDetailAction($id){
-        $repo = $this->getDoctrine()->getRepository(Movie::class);
-        $film = $repo->findOneByImdbId($id);
+    public function getDetailAction(Request $request, $id){
+
+        $review = new Review();
+        $reviewForm = $this->createForm(ReviewType::class,  $review);
+        $reviewForm->handleRequest($request);
+
+        $repoFilm = $this->getDoctrine()->getRepository(Movie::class);
+        $film = $repoFilm->findOneByImdbId($id);
+
+        if($reviewForm->isSubmitted()){
+            $em = $this->getDoctrine()->getManager();
+            $review->setMovie($film);
+            $review->setUser($this->getUser());
+            $em->persist($review);
+            $em->flush();
+
+            $this->addFlash("success", "votre idée a bien été enregistrée");
+            return $this->redirectToRoute('getfilm',[
+                "id"=> $film->getImdbId()
+            ]);
+        }
 
         return $this->render('/film/detail_film.html.twig',[
-            "film"=> $film
+            "film"=> $film,
+            "reviewForm" =>  $reviewForm->createView()
         ]);
     }
 }

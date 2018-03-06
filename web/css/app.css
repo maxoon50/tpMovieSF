@@ -76,7 +76,7 @@ img{
 }
 
 .genre-cont{
-   margin-left: auto;
+   margin-left: auto !important;
 }
 .form-cont{
     padding:50px !important;
@@ -92,4 +92,20 @@ form button{
     border-radius: 4px;
     padding:20px;
     margin-top: 50px;
+}
+
+
+.card-content .genre-cont{
+    display: flex;
+    align-items: center;
+}
+form[name="appbundle_review"]{
+    margin-bottom: 75px;
+}
+.header-comment{
+    background-color: #FF9F43;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 4px!important;
+    border-top-right-radius: 4px!important;
 }

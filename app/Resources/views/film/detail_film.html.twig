@@ -7,7 +7,7 @@
 
 {% block main %}
 
-<div class="cont-detail-film" style= "background-image: url({{ asset('posters/'~ film.imdbId ~'.jpg') }}); ;
+<div class="cont-detail-film" style= "background-image: url({{ asset('backdrops/'~ film.imdbId ~'.jpg') }}); ;
         background-size: cover;
  ";>
 
@@ -82,33 +82,36 @@
     <div class="cont-review">
         <h2>Les critiques</h2>
         {% if is_granted('ROLE_USER') %}
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="merci de soumettre un titre" id="titre" type="text" class="validate">
-                            <label for="titre">Titre</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Votre critique</label>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <button class="btn waves-effect waves-light m-l" type="submit" id="_submit" name="_submit">Soumettre
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            {% else %}
+            {{ form_start(reviewForm) }}
+            {{ form_widget(reviewForm) }}
+            {{ form_end(reviewForm) }}
+        {% else %}
                 <p class="m-l">Connectez vous pour écrire un comment
                        <a href="{{ path('fos_user_security_login') }}" class="btn-floating btn-large red" >                  <i class="large material-icons">forward</i>
                     </a></p>
         {% endif %}
+
+
+        {% for c in film.reviews %}
+            <div class="col s12 m7">
+
+                <div class="card horizontal">
+
+                    <div class="card-stacked">
+                        <div class="card-content flex header-comment">
+                            <h5>{{  c.title|capitalize }}</h5>
+                                <p class="genre-cont">par {{ c.user.username|capitalize }} <span><em class="m-l">  le {{ c.date|date("d/m/Y") }}</em></span></p>
+
+
+                        </div>
+                        <div class="card-action">
+                           <p>" {{ c.detail|capitalize }} "</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
     </div>
 
 

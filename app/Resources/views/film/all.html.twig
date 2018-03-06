@@ -3,6 +3,34 @@
 {% block main %}
     <h2 class="whiteText">Tous les films</h2>
 
+
+
+    <div class="input-field col s4">
+        <form action="">
+        <select>
+            <option value="" disabled selected>Catégorie:</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+        </select>
+        <label>Catégorie:</label>
+            <select>
+                <option value="" disabled selected>Année min:</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label>Année min:</label>
+            <select>
+                <option value="" disabled selected>Année mAX:</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label>Année max:</label>
+        </form>
+    </div>
+
     <div class="flex">
         {% for movie in pagination %}
 
