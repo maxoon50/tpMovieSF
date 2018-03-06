@@ -79,6 +79,38 @@
 
 </div>
 
+    <div class="cont-review">
+        <h2>Les critiques</h2>
+        {% if is_granted('ROLE_USER') %}
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="merci de soumettre un titre" id="titre" type="text" class="validate">
+                            <label for="titre">Titre</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Votre critique</label>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="btn waves-effect waves-light m-l" type="submit" id="_submit" name="_submit">Soumettre
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+                <p class="m-l">Connectez vous pour écrire un comment
+                       <a href="{{ path('fos_user_security_login') }}" class="btn-floating btn-large red" >                  <i class="large material-icons">forward</i>
+                    </a></p>
+        {% endif %}
+    </div>
+
 
 
 {% endblock %}
