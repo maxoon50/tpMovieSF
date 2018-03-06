@@ -17,8 +17,8 @@ nav{
     min-height: 300px;
 }
 .min-height-xxl{
-    min-height: 700px;
-    padding-top:75px;
+    padding-top:125px;
+    padding-bottom: 125px;
 }
 .appFlashs{
     position: fixed;
@@ -43,4 +43,26 @@ img{
 .rating{
     display: flex;
     align-items: center;
+}
+.cont-detail-film{
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 4px;
+}
+.cont-detail-film:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.description-film{
+    padding: 20px;
+    background-color: rgba(255,159,67,0.9);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.genre-btn{
+    background-color: black;
+}
+
+.genre-cont{
+   margin-left: auto;
 }

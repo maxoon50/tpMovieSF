@@ -6,10 +6,25 @@
 {% endblock %}
 
 {% block main %}
-    //a voir
-<div class="cont-detail-film" style= "background-image: url({{ asset('posters/'~ film.imdbId ~'.jpg') }});";>
-    <h2>{{ film.title }}</h2><span><em>{{ film.year }}</em></span>
-    <p> <div class="rating">
+
+<div class="cont-detail-film" style= "background-image: url({{ asset('posters/'~ film.imdbId ~'.jpg') }}); ;
+        background-size: cover;
+ ";>
+
+        <div class="description-film">
+                <div class="flex">
+                        <div>
+                                <h2>{{ film.title }}</h2><span><em>{{ film.year }}</em></span>
+                        </div>
+                        <div class="genre-cont">
+                            {%  for g in film.genres %}
+                            <a class="waves-effect waves-light btn genre-btn">{{ g }}</a>
+                             {% endfor %}
+                        </div>
+                </div>
+
+
+                <p> <div class="rating">
         {% if film.rating <= 2 %}
             <i class="tiny material-icons">star_half</i>
             <i class="tiny material-icons">star_border</i>
@@ -53,9 +68,14 @@
             <i class="tiny material-icons">star</i>
             <i class="tiny material-icons">star</i>
         {% endif %}
-        <span> note : {{ film.rating }} sur {{ film.votes }}</span>
+        <span> note : {{ film.rating }} sur {{ film.votes }} votes</span>
     </div></p>
 <p>{{ film.plot }}</p>
+        </div>
+        <div class="flex">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ film.trailerId }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        </div>
 
 </div>
 
