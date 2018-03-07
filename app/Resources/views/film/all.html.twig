@@ -1,35 +1,37 @@
 {% extends 'main.html.twig' %}
 
 {% block main %}
+
+
     <h2 class="whiteText">Tous les films</h2>
 
 
-
+<div class="form-filter-cont">
     <div class="input-field col s4">
-        <form action="">
-        <select>
-            <option value="" disabled selected>Catégorie:</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-        </select>
-        <label>Catégorie:</label>
-            <select>
-                <option value="" disabled selected>Année min:</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-            <label>Année min:</label>
-            <select>
-                <option value="" disabled selected>Année mAX:</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-            <label>Année max:</label>
-        </form>
+        {{ form_start(form) }}
+        {{ form_widget(form.category) }}
+<p><em>année min.</em></p>
+        <input type="range" min="1900" max="{{ currentYear }}" name="anneeMin" value="1900"/>
+
+        <p><em>année max.</em></p>
+        <input type="range" min="1900" max="{{ currentYear }}"  name="anneeMax" value="2018"/>
+        {{ form_end(form) }}
     </div>
+</div>
+<div class="row">
+    <div class="col s4 cont-filter">
+        {% if recherche is defined %}
+
+            <a class="waves-effect waves-light btn genre-btn">{{ recherche.genre }}</a>
+            <p>tous les films de {{ recherche.anneeMin }} à {{ recherche.anneeMax }}</p>
+
+        {% else %}
+            <a class="waves-effect waves-light btn genre-btn">ALL</a>
+        {% endif %}
+    </div>
+
+</div>
+
 
     <div class="flex">
         {% for movie in pagination %}

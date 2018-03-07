@@ -22,4 +22,27 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
 
         return $query;
     }
+
+
+    public function getFilmFiltered($genre, $dateMin, $dateMax)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->addSelect('m')
+            ->addOrderBy('m.title', 'ASC');
+        $qb->andWhere('m.year BETWEEN :dateMin AND :dateMax')
+            ->setParameter('dateMin', $dateMin)
+            ->setParameter('dateMax', $dateMax);
+        if(!$genre == '_tous_'){
+            $qb->join("m.genres", "g")
+                ->addSelect('g')
+                ->andWhere('g = :genre')
+                ->setParameter("genre", $genre);
+        }
+
+
+
+        $query = $qb->getQuery();
+
+        return $query;
+    }
 }

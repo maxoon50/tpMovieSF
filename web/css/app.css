@@ -109,3 +109,15 @@ form[name="appbundle_review"]{
     border-top-left-radius: 4px!important;
     border-top-right-radius: 4px!important;
 }
+.form-filter-cont{
+    padding: 20px !important;
+    background-color: #FF9F43;
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
+.cont-filter{
+    background-color: #EE6E73;
+    padding: 10px !important;
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
