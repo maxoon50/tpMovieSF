@@ -32,12 +32,12 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
         $qb->andWhere('m.year BETWEEN :dateMin AND :dateMax')
             ->setParameter('dateMin', $dateMin)
             ->setParameter('dateMax', $dateMax);
-        if(!$genre == '_tous_'){
+
             $qb->join("m.genres", "g")
                 ->addSelect('g')
                 ->andWhere('g = :genre')
                 ->setParameter("genre", $genre);
-        }
+
 
 
 

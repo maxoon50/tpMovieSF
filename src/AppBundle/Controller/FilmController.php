@@ -52,13 +52,13 @@ class FilmController extends Controller
             $pagination = $paginator->paginate(
                 $query, /* query NOT result */
                 $request->query->getInt('page', 1)/*page number*/,
-                50/*limit per page*/
+                750/*limit per page*/
             );
             return $this->render('/film/all.html.twig', array(
                 'pagination' => $pagination,
                 'form' => $form->createView(),
                 'currentYear' =>  date("Y"),
-                'recherche' => [ "anneeMin"=> $dateMin, "anneeMax" => $dateMax, "genre"=>$category ]
+                'recherche' => [ "anneeMin"=> $dateMin, "anneeMax" => $dateMax, "genre"=>$category]
             ));
 
         }
