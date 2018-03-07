@@ -1,0 +1,81 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * WishedFilm
+ *
+ * @ORM\Table(name="wished_film")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\WishedFilmRepository")
+ */
+class WishedFilm
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User" , inversedBy="wishedList")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @var Movies
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie" , inversedBy="wished")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $movies;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="addedAt", type="datetime")
+     */
+    private $addedAt;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set addedAt
+     *
+     * @param \DateTime $addedAt
+     *
+     * @return WishedFilm
+     */
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get addedAt
+     *
+     * @return \DateTime
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
+    }
+}
+

@@ -25,6 +25,14 @@ class Movie
     /**
      * @var ArrayCollection
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\WishedFilm", mappedBy="movies")
+     *
+     */
+    private $wished;
+
+    /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="movie")
      *
      */
@@ -561,5 +569,39 @@ class Movie
     public function getReviews()
     {
         return $this->reviews;
+    }
+
+    /**
+     * Add wished
+     *
+     * @param \AppBundle\Entity\WishedFilm $wished
+     *
+     * @return Movie
+     */
+    public function addWished(\AppBundle\Entity\WishedFilm $wished)
+    {
+        $this->wished[] = $wished;
+
+        return $this;
+    }
+
+    /**
+     * Remove wished
+     *
+     * @param \AppBundle\Entity\WishedFilm $wished
+     */
+    public function removeWished(\AppBundle\Entity\WishedFilm $wished)
+    {
+        $this->wished->removeElement($wished);
+    }
+
+    /**
+     * Get wished
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWished()
+    {
+        return $this->wished;
     }
 }

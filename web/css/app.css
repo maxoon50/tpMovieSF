@@ -121,3 +121,10 @@ form[name="appbundle_review"]{
     border-radius: 4px;
     margin-bottom: 50px;
 }
+.flex-align-vert{
+    display: flex;
+    align-items: center;
+}
+.hide{
+    display: none;
+}

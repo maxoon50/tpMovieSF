@@ -14,6 +14,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Review
 {
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     /**
      * @var int
      *
@@ -144,11 +150,11 @@ class Review
     /**
      * Set movie
      *
-     * @param \AppBundle\Entity\Review $movie
+     * @param \AppBundle\Entity\Movie $movie
      *
-     * @return Review
+     * @return Movie
      */
-    public function setMovie(\AppBundle\Entity\Review $movie)
+    public function setMovie(\AppBundle\Entity\Movie $movie)
     {
         $this->movie = $movie;
 
@@ -158,10 +164,34 @@ class Review
     /**
      * Get movie
      *
-     * @return \AppBundle\Entity\Review
+     * @return \AppBundle\Entity\Movie
      */
     public function getMovie()
     {
         return $this->movie;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Review
+     */
+    public function setUser(\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

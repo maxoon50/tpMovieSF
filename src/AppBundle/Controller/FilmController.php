@@ -6,6 +6,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Genre;
 use AppBundle\Entity\Movie;
 use AppBundle\Entity\Review;
+use AppBundle\Entity\WishedFilm;
 use AppBundle\Form\ReviewType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -89,6 +90,8 @@ class FilmController extends Controller
         $repoFilm = $this->getDoctrine()->getRepository(Movie::class);
         $film = $repoFilm->findOneByImdbId($id);
 
+
+
         if($reviewForm->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
             $review->setMovie($film);
@@ -101,6 +104,26 @@ class FilmController extends Controller
                 "id"=> $film->getImdbId()
             ]);
         }
+
+        if($this->isGranted('ROLE_USER')){
+            $repoWished = $this->getDoctrine()->getRepository(WishedFilm::class);
+            $alreadyAdded =  $repoWished->findOneBy([
+                "movies" => $film,
+                "user" => $this->getUser()
+            ]);
+            if($alreadyAdded != null){
+                $alreadyAdded = true;
+            }else{
+                $alreadyAdded = false;
+            }
+            return $this->render('/film/detail_film.html.twig',[
+                "film"=> $film,
+                "reviewForm" =>  $reviewForm->createView(),
+                "alreadyInList" => $alreadyAdded
+            ]);
+        }
+
+
 
         return $this->render('/film/detail_film.html.twig',[
             "film"=> $film,

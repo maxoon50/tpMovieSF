@@ -25,6 +25,14 @@ class Movie
     /**
      * @var ArrayCollection
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\WishedFilm", mappedBy="movies")
+     *
+     */
+    private $wished;
+
+    /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="movie")
      *
      */

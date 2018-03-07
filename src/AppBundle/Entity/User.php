@@ -29,6 +29,14 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\WishedFilm", mappedBy="user")
+     *
+     */
+    private $wishedList;
+
+    /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="user")
      *
      */
@@ -66,5 +74,39 @@ class User extends BaseUser
     public function getReviews()
     {
         return $this->reviews;
+    }
+
+    /**
+     * Add wishedList
+     *
+     * @param \AppBundle\Entity\WishedFilm $wishedList
+     *
+     * @return User
+     */
+    public function addWishedList(\AppBundle\Entity\WishedFilm $wishedList)
+    {
+        $this->wishedList[] = $wishedList;
+
+        return $this;
+    }
+
+    /**
+     * Remove wishedList
+     *
+     * @param \AppBundle\Entity\WishedFilm $wishedList
+     */
+    public function removeWishedList(\AppBundle\Entity\WishedFilm $wishedList)
+    {
+        $this->wishedList->removeElement($wishedList);
+    }
+
+    /**
+     * Get wishedList
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWishedList()
+    {
+        return $this->wishedList;
     }
 }
