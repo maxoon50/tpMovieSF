@@ -10,6 +10,10 @@ getfilm:
     path:     /get-film/{id}
     defaults: { _controller: AppBundle:Film:getDetail }
 
+getByPeople:
+    path:     /get-film-by-people/{imdbId}
+    defaults: { _controller: AppBundle:Film:getByPeople }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

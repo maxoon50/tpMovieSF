@@ -3,11 +3,12 @@
 {% block main %}
 
 
-    <h2 class="whiteText">Tous les films</h2>
+    <h2 class="whiteText">Tous les films <span><em>{% if people is defined %} de {{ people.name }}{% endif %}</em></span></h2>
 
-
+{% if form is defined %}
 <div class="form-filter-cont">
     <div class="input-field col s4">
+
         {{ form_start(form) }}
         {{ form_widget(form.category) }}
 <p><em>année min.</em></p>
@@ -32,6 +33,7 @@
 
 </div>
 
+{% endif %}
 
     <div class="flex">
         {% for movie in pagination %}

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Genre;
 use AppBundle\Entity\Movie;
+use AppBundle\Entity\People;
 use AppBundle\Entity\Review;
 use AppBundle\Entity\WishedFilm;
 use AppBundle\Form\ReviewType;
@@ -123,11 +124,32 @@ class FilmController extends Controller
             ]);
         }
 
-
-
         return $this->render('/film/detail_film.html.twig',[
             "film"=> $film,
             "reviewForm" =>  $reviewForm->createView()
         ]);
+    }
+
+    public function getByPeopleAction(Request $request ,$imdbId)
+    {
+        $repoMovie = $this->getDoctrine()->getRepository(Movie::class);
+        $query = $repoMovie->getFilmByPeople($imdbId);
+
+        $repoPeople = $this->getDoctrine()->getRepository(People::class);
+        $people = $repoPeople->findOneByImdbId($imdbId);
+
+        $paginator  = $this->get('knp_paginator');
+
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            50/*limit per page*/
+        );
+
+        return $this->render('/film/all.html.twig', array(
+            'pagination' => $pagination,
+            'currentYear' =>  date("Y"),
+            'people' => $people
+        ));
     }
 }

@@ -20,6 +20,7 @@
                             {%  for g in film.genres %}
                             <a class="waves-effect waves-light btn genre-btn">{{ g }}</a>
                              {% endfor %}
+
                         </div>
                 </div>
 
@@ -100,7 +101,20 @@
                     </p>
             {% endif %}
             {% endif %}
+
+            {% for r in film.directors %}
+                <p>Réalisateur : <a href="{{ path('getByPeople', {imdbId : r.imdbId}) }}">{{ r.name }}</a></p>
+
+            {% endfor %}
+            <p>Acteurs :
+            {% for a in film.actors %}
+                    <span><a href="{{ path('getByPeople', {imdbId : a.imdbId}) }}">{{ a.name }}</a>, </span>
+            {% endfor %}
+            </p>
         </div>
+    <div>
+
+    </div>
         <div class="flex">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ film.trailerId }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
