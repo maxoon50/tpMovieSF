@@ -85,7 +85,8 @@
                     <i class="m-l small material-icons js-add-wishlist">favorite_border</i>
                 </a>
             </p>
-            {% if alreadyInList %}
+            {% if is_granted('ROLE_USER') %}
+            {% if alreadyInList  %}
                 <p class="flex-align-vert js-hide">Retirer de ma wishlist
                     <a href="{{ path('wishlist_remove', {"id":film.imdbId}) }}" data-url="{{ path('wishlist', {"id":film.imdbId}) }}">
                         <i class="m-l small material-icons js-remove-wishlist">remove_circle</i>
@@ -98,7 +99,7 @@
                         </a>
                     </p>
             {% endif %}
-
+            {% endif %}
         </div>
         <div class="flex">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ film.trailerId }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

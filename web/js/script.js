@@ -25,7 +25,6 @@ $(document).ready(function() {
         e.preventDefault();
         var url = $(this).parent().attr('href');
         var returnUrl = $(this).parent().attr('data-url');
-        console.log(returnUrl);
         $.ajax({
             method: "GET",
             url: url,
