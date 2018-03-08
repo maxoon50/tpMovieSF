@@ -1,7 +1,20 @@
-<nav>
+<nav class="flex-align-vert">
+    <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" required name="search" data-href="{{ path("ajaxFilm") }}">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
     <div class="nav-wrapper">
         <a id="logo-container" href="{{ path('home') }}" class="brand-logo"><img src="{{ asset('images/logo.png') }}" alt="" id="logo"></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+
+
 
             <li><a href="{{ path('getall') }}">tous les films</a></li>
 
@@ -32,4 +45,5 @@
 
         </ul>
     </div>
+
 </nav>

@@ -91,7 +91,7 @@ class FilmController extends Controller
         $repoFilm = $this->getDoctrine()->getRepository(Movie::class);
         $film = $repoFilm->findOneByImdbId($id);
 
-
+        $propositions = $repoFilm->getPropositions($film);
 
         if($reviewForm->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
@@ -120,13 +120,15 @@ class FilmController extends Controller
             return $this->render('/film/detail_film.html.twig',[
                 "film"=> $film,
                 "reviewForm" =>  $reviewForm->createView(),
-                "alreadyInList" => $alreadyAdded
+                "alreadyInList" => $alreadyAdded,
+                "propositions" => $propositions
             ]);
         }
 
         return $this->render('/film/detail_film.html.twig',[
             "film"=> $film,
-            "reviewForm" =>  $reviewForm->createView()
+            "reviewForm" =>  $reviewForm->createView(),
+            "propositions" => $propositions
         ]);
     }
 

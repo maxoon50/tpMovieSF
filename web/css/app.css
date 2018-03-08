@@ -128,3 +128,10 @@ form[name="appbundle_review"]{
 .hide{
     display: none;
 }
+.cont-prop{
+    width:140px;
+    margin:15px;
+}
+.carousel{
+    background-color: rgba(238,110,115,0.7);
+}

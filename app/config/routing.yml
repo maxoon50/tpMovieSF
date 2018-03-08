@@ -29,3 +29,8 @@ wishlist_remove:
 wishlist:
     path:     /wishlist
     defaults: { _controller: AppBundle:Wished:getAll }
+
+
+ajaxFilm:
+    path:     /api
+    defaults: { _controller: AppBundle:Film:ajax }

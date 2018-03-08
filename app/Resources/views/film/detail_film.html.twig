@@ -117,9 +117,16 @@
     </div>
         <div class="flex">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ film.trailerId }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
         </div>
+<div class="row flex">
 
+    <div class="carousel">
+        <h4 class="center">Nos propositions :</h4>
+    {% for p in propositions %}
+        <a class="carousel-item" href="{{ path('getfilm', {"id": p.imdbId }) }}"><img src="{{ asset('posters/'~ p.imdbId ~'.jpg') }}"></a>
+    {% endfor %}
+    </div>
+</div>
 </div>
 
     <div class="cont-review">

@@ -1,7 +1,8 @@
 console.log("ok script");
 $(document).ready(function() {
     $('select').material_select();
-
+    $('.carousel').carousel();
+    $(".button-collapse").sideNav();
 
     $(document).on('click','.js-add-wishlist', function(e){
         e.preventDefault();

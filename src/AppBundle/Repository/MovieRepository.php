@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
-
+use AppBundle\Entity\Movie;
 
 
 /**
@@ -62,6 +62,30 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
 
         $query = $qb->getQuery();
         return $query;
+
+    }
+
+    public function getPropositions(Movie $film)
+    {
+
+        $qb = $this->createQueryBuilder('m');
+        $qb->addSelect('m')
+            ->addOrderBy('m.title', 'ASC')
+            ->andWhere('m.year BETWEEN :dateMin AND :dateMax')
+            ->andWhere('m.title != :title')
+            ->setParameter("dateMin", $film->getYear()-5)
+            ->setParameter("dateMax", $film->getYear()+5)
+            ->setParameter("title", $film->getTitle());
+         $qb->join("m.genres", "g")
+            ->addSelect('g')
+            ->andWhere('g = :genre')
+            ->setParameter("genre", $film->getGenres()[0])
+            ->setMaxResults(10);
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
 
     }
 
