@@ -44,7 +44,6 @@ $(document).ready(function() {
         e.preventDefault();
         var urlArray = $(this).attr('href').split('/');
         var imdb = urlArray[urlArray.length-1];
-        console.log(imdb);
         var url = $(this).attr('href');
         $.ajax({
             method: "GET",
@@ -57,6 +56,22 @@ $(document).ready(function() {
             });
     })
 
+    $( "#search" ).on('input',function() {
+        var href =  $( "#search" ).attr('data-href');
+       var search = $( "#search" ).val();
+       if(search.length > 3){
+           $.ajax({
+               method: "GET",
+               url: href+'/'+search,
+               datatype: "JSON"
+           })
+               .done(function( msg ) {
+                   console.log(msg)
+
+
+               });
+       }
+    });
 
 
 

@@ -154,4 +154,15 @@ class FilmController extends Controller
             'people' => $people
         ));
     }
+
+    public function ajaxAction($nom)
+    {
+        $repoMovie = $this->getDoctrine()->getRepository(Movie::class);
+        $films = $repoMovie-> findFilmStartWith($nom);
+
+        return $this->json(array(
+            'result' => 'OK',
+            'films' => $films
+        ));
+    }
 }

@@ -89,5 +89,18 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function findFilmStartWith($nom)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->addSelect('m')
+            ->addOrderBy('m.title', 'ASC')
+            ->andWhere('m.title like :nom')
+            ->setParameter('nom' , '%'.$nom.'%')
+        ;
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
 
 }
