@@ -39,6 +39,23 @@ $(document).ready(function() {
             });
     })
 
+    $(document).on('click', '.js-remove-wishlist', function(e){
+        e.preventDefault();
+        var urlArray = $(this).attr('href').split('/');
+        var imdb = urlArray[urlArray.length-1];
+        console.log(imdb);
+        var url = $(this).attr('href');
+        $.ajax({
+            method: "GET",
+            url: url,
+        })
+            .done(function( msg ) {
+                console.log(msg)
+                $("#"+imdb).fadeOut("slow");
+                $("#"+imdb).remove();
+            });
+    })
+
 
 
 

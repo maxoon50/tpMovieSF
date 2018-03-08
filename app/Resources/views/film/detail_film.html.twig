@@ -94,7 +94,7 @@
                 </p>
             {% else %}
                     <p class="flex-align-vert js-hide">Ajouter à ma wishlist
-                        <a href="{{ path('wishlist', {"id":film.imdbId}) }}" data-url="{{ path('wishlist_remove', {"id":film.imdbId}) }}">
+                        <a href="{{ path('wishlist_add', {"id":film.imdbId}) }}" data-url="{{ path('wishlist_remove', {"id":film.imdbId}) }}">
                             <i class="m-l small material-icons js-add-wishlist">favorite_border</i>
                         </a>
                     </p>

@@ -7,6 +7,9 @@
             <li><a href="{{ path('fos_user_registration_register') }}">créer un compte</a></li>
             {% if is_granted('ROLE_USER') %}
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ app.user.username }} | logout</a></li>
+
+                <li><a href="{{ path('wishlist') }}">ma wishlist</a></li>
+
             {% else %}
                 <li><a href="{{ path('fos_user_security_login') }}">se connecter</a></li>
             {% endif %}

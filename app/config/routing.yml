@@ -13,10 +13,15 @@ getfilm:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-wishlist:
-    path:     /wishlist/{id}
+wishlist_add:
+    path:     /wishlist-add/{id}
     defaults: { _controller: AppBundle:Wished:add }
 
 wishlist_remove:
     path:     /remove-wishlist/{id}
     defaults: { _controller: AppBundle:Wished:remove }
+
+
+wishlist:
+    path:     /wishlist
+    defaults: { _controller: AppBundle:Wished:getAll }

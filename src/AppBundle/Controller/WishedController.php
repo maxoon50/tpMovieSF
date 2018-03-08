@@ -51,4 +51,23 @@ class WishedController extends Controller
             'error' => 'none'
         ));
     }
+
+    public function getAllAction()
+    {
+        $listFilm = [];
+        $repoWished = $this->getDoctrine()->getRepository(WishedFilm::class);
+        $repoMovie = $this->getDoctrine()->getRepository(Movie::class);
+        $wished = $repoWished->findByuser($this->getUser());
+
+        foreach ($wished as $film) {
+            $listFilm[] = $repoMovie->findOneById($film->getMovies()->getId());
+        }
+
+        if($this->isGranted('ROLE_USER')) {
+            return $this->render("/film/wishlist.html.twig",[
+                "listeFilm"=> $listFilm
+            ]);
+        }
+    }
+
 }
